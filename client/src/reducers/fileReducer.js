@@ -1,4 +1,7 @@
 const initialState = {
+  files:[],
+  currentDir:null,
+
 }
 
 const fileReducer = (state = initialState, action) => {

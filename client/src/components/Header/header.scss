@@ -1,0 +1,17 @@
+.header{
+  grid-area: header;
+  background-color: #eae9e9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-logo{
+  display: flex;
+  padding:10px 0 0 15px;
+}
+.logout{
+  padding-right: 10px;
+  cursor: pointer;
+  color: blue;
+  font-size: 24px;
+}
