@@ -6,7 +6,7 @@ import fileReducer from './fileReducer';
 
 let reducers = combineReducers({
   user: userReducer,
-  file: fileReducer
+  files: fileReducer
 });
 
 export const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));

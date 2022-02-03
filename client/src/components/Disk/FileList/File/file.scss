@@ -1,0 +1,21 @@
+.file {
+  margin: 10px 0;
+  border-bottom: 1px solid grey;
+  display: grid;
+  grid-template-columns: 1fr 4fr repeat(4, 1fr);
+  align-items: center;
+
+  &__date{
+    grid-column-start: 5;
+    justify-self: center;
+  }
+  &__size{
+    grid-column-start: 6;
+    justify-self: center;
+  }
+
+  & img {
+    width: 48px;
+    height: 48px;
+  }
+}

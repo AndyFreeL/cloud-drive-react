@@ -16,3 +16,13 @@ export const userAPI = {
     return instance.get('auth/auth')
   }
 }
+
+export const filesAPI = {
+  getFiles(dirId){
+    let url = 'files'
+    if(dirId){
+      url = `files?parent=${dirId}`
+    }
+    return instance.get(url)
+  }
+}
