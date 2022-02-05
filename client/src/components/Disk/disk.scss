@@ -2,7 +2,41 @@
   grid-area: disk;
 
 }
-.nav_block{
-  height: 30px;
+
+.nav-block {
+  display: flex;
+  height: 45px;
   border-bottom: 1px solid grey;
+  & img {
+    padding: 4px;
+    margin: 2px 8px;
+
+  }
+}
+
+.folder_path {
+  display: flex;
+  //background-color: #98d598;
+  width: 100%;
+}
+
+.folder {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+
+  img {
+    width: 15px;
+    height: 15px;
+  }
+
+  & div {
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 0 5px;
+  }
+
+  & div:hover {
+    background-color: #dcd7ce;
+  }
 }
