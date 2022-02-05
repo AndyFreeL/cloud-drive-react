@@ -26,7 +26,6 @@ export const logout = ()=>({type:LOGOUT})
 export const login = (email, password) => async (dispatch) =>{
   try{
     const response = await userAPI.login(email, password);
-    console.log(response.data.user)
     dispatch(setUser(response.data.user))
     localStorage.setItem('token', response.data.token)
   }catch (e){

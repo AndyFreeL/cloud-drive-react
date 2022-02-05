@@ -25,10 +25,10 @@ function App() {
         ? <Routes>
           <Route path="/registration" element={<Registration/>}/>
           <Route path="/login" element={<Authorization/>}/>
-          <Route path="*" element={<Navigate to="/login"/>}
-          />
+          <Route path="*" element={<Navigate to="/login"/>}/>
         </Routes>
-        : <div className='app-wrapper'>
+        :
+        <div className='app-wrapper'>
           <Header/>
           <Leftbar/>
           <Disk/>

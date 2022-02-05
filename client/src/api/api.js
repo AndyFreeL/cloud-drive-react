@@ -24,5 +24,9 @@ export const filesAPI = {
       url = `files?parent=${dirId}`
     }
     return instance.get(url)
+  },
+  createDir(dirId, name){
+    console.log(dirId, name)
+    return instance.post('files', { name, parent: dirId, type:'dir'})
   }
 }
