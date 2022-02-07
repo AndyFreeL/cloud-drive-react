@@ -26,7 +26,9 @@ export const filesAPI = {
     return instance.get(url)
   },
   createDir(dirId, name){
-    console.log(dirId, name)
     return instance.post('files', { name, parent: dirId, type:'dir'})
+  },
+  uploadFile(formData, uploadStatus){
+    return instance.post('files/upload', formData, uploadStatus)
   }
 }

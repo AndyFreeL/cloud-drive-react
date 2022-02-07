@@ -6,6 +6,10 @@ import File from "./File/File";
 const FileList = () => {
   const files = useSelector(state=>state.files.files).map(file=><File key={file._id} file={file}/>);
 
+  if(files.length === 0){
+    return <div className='empty-folder'>Папка пуста</div>
+  }
+
   return (
     <div className='filelist'>
       <div className='filelist__header'>

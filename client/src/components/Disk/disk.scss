@@ -1,17 +1,27 @@
 .disk {
   grid-area: disk;
-
+  margin-top: 40px;
 }
 
 .nav-block {
+  background-color: #eae9e9;
+  grid-area: navbar;
   display: flex;
   height: 45px;
   border-bottom: 1px solid grey;
+  position: sticky;
+  top: 91px;
   & img {
     padding: 4px;
     margin: 2px 8px;
-
   }
+}
+.nav-buttons{
+  display: flex;
+}
+.nav-button:hover{
+  background-color: rgba(128, 128, 128, 0.33);
+  border-radius: 3px;
 }
 
 .folder_path {
@@ -30,13 +40,4 @@
     height: 15px;
   }
 
-  & div {
-    cursor: pointer;
-    border-radius: 3px;
-    padding: 0 5px;
-  }
-
-  & div:hover {
-    background-color: #dcd7ce;
-  }
 }

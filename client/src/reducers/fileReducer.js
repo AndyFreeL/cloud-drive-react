@@ -40,7 +40,6 @@ export const getFiles = (currentDir) => async(dispatch)=>{
     alert(e)
   }
 }
-
 export const createDirAction = (currentDir, dirName) => async(dispatch)=>{
   try{
     const response = await filesAPI.createDir(currentDir, dirName)
@@ -50,5 +49,4 @@ export const createDirAction = (currentDir, dirName) => async(dispatch)=>{
     alert(e)
   }
 }
-
 export default fileReducer;
