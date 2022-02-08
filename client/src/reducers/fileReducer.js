@@ -49,4 +49,19 @@ export const createDirAction = (currentDir, dirName) => async(dispatch)=>{
     alert(e)
   }
 }
+export const downloadFile = (file) => async(dispatch)=>{
+  try{
+    const response = await filesAPI.downloadFile(file)
+    const url = window.URL.createObjectURL(new Blob([response.data]))
+    const link = document.createElement('a')
+    console.log(file)
+    link.href=url
+    link.setAttribute('download', file.name)
+    document.body.appendChild(link)
+    link.click()
+  }catch (e){
+    alert(e)
+  }
+}
+
 export default fileReducer;

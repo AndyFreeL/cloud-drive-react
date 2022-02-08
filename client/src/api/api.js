@@ -30,5 +30,10 @@ export const filesAPI = {
   },
   uploadFile(formData, uploadStatus){
     return instance.post('files/upload', formData, uploadStatus)
+  },
+  downloadFile(file){
+    return instance.get(`files/download?id=${file._id}`, {
+      responseType:'blob'
+    })
   }
 }
