@@ -22,11 +22,11 @@ const Disk = () => {
 
   useEffect(() => {
     dispatch(getFiles(currentDir))
+    console.log(currentDir)
   }, [currentDir])
 
   function backClickHandler() {
     const backDir = dirStack.pop()
-    // dispatch(setCurrentDir(backDir[backDir.length-2]))
     dispatch(setCurrentDir(backDir.currentDir))
   }
 

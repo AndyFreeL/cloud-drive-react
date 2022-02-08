@@ -35,5 +35,8 @@ export const filesAPI = {
     return instance.get(`files/download?id=${file._id}`, {
       responseType:'blob'
     })
+  },
+  deleteFile(file){
+    return instance.delete(`files?id=${file._id}`)
   }
 }
