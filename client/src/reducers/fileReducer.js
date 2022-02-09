@@ -40,9 +40,9 @@ export const setFilesView = (payload)=>({type:SET_VIEW,  payload})
 
 
 //------------------------------actions----------------------------------------------
-export const getFiles = (currentDir) => async(dispatch)=>{
+export const getFiles = (currentDir, sort) => async(dispatch)=>{
   try{
-    const response = await filesAPI.getFiles(currentDir)
+    const response = await filesAPI.getFiles(currentDir,sort)
     dispatch(setFiles(response.data))
   }catch (e){
     alert(e)

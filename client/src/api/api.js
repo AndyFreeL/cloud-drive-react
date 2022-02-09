@@ -18,10 +18,16 @@ export const userAPI = {
 }
 
 export const filesAPI = {
-  getFiles(dirId){
+  getFiles(dirId, sort){
     let url = 'files'
     if(dirId){
       url = `files?parent=${dirId}`
+    }
+    if (sort) {
+      url = `files?sort=${sort}`
+    }
+    if (dirId && sort) {
+      url = `files?parent=${dirId}&sort=${sort}`
     }
     return instance.get(url)
   },

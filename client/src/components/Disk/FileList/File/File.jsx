@@ -12,6 +12,7 @@ import sizeFormat from "../../../../utils/sizeFormat";
 const File = ({file}) => {
   const dispatch = useDispatch()
   const currentDir = useSelector(state => state.files.currentDir)
+  const filesView = useSelector(state => state.files.view);
 
 
   function openDirHandler() {
@@ -32,19 +33,33 @@ const File = ({file}) => {
     dispatch(deleteFile(file))
   }
 
-  return (
-    <div className='file' onClick={()=>openDirHandler()}>
+  if (filesView === 'list') {
+    return (
+      <div className='file' onClick={() => openDirHandler()}>
         <img src={file.type === 'dir' ? folderIcon : fileIcon} alt=""/>
-      <div className='file__name'>{file.name}</div>
-      <div className='down-del-icons'>
-        {file.type != 'dir' &&  <div onClick={(e)=>downloadClickHandler(e)}><img src={downloadIcon}alt=""/></div>}
-        <div onClick={(e)=>deleteClickHandler(e)}><img src={deleteIcon}alt=""/></div>
+        <div className='file__name'>{file.name}</div>
+        <div className='down-del-icons'>
+          {file.type != 'dir' && <div onClick={(e) => downloadClickHandler(e)}><img src={downloadIcon} alt=""/></div>}
+          <div onClick={(e) => deleteClickHandler(e)}><img src={deleteIcon} alt=""/></div>
+        </div>
+        <div className='file__date'>{file.date.slice(0, 10)}</div>
+        <div className='file__size'>{sizeFormat(file.size)}
+        </div>
       </div>
-      <div className='file__date'>{file.date.slice(0,10)}</div>
-      <div className='file__size'>{sizeFormat(file.size)}
+    );
+  }
+  if (filesView === 'plate') {
+    return(
+      <div className='file-plate' onClick={() => openDirHandler()}>
+        <img src={file.type === 'dir' ? folderIcon : fileIcon} alt=""/>
+        <div className='file__name'>{(file.name.length > 15) ? (file.name.slice(0, 14)+'...') :file.name}</div>
+        <div className='down-del-icons'>
+          {file.type != 'dir' && <div onClick={(e) => downloadClickHandler(e)}><img src={downloadIcon} alt=""/></div>}
+          <div onClick={(e) => deleteClickHandler(e)}><img src={deleteIcon} alt=""/></div>
+        </div>
       </div>
-    </div>
-  );
+    )
+  }
 };
 
 export default File;

@@ -8,9 +8,11 @@
   grid-area: navbar;
   display: flex;
   height: 45px;
+  width: 70%;
   border-bottom: 1px solid grey;
-  position: sticky;
+  position: fixed;
   top: 91px;
+  right: 0;
   & img {
     padding: 4px;
     margin: 2px 8px;
@@ -39,5 +41,7 @@
     width: 15px;
     height: 15px;
   }
-
+}
+.sort-block{
+  display: flex;
 }
