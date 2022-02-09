@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {deleteFile, downloadFile, pushToStack, setCurrentDir} from "../../../../reducers/fileReducer";
 import deleteIcon from './../../../../assets/image/delete.svg';
 import downloadIcon from './../../../../assets/image/download.svg';
+import sizeFormat from "../../../../utils/sizeFormat";
 
 
 const File = ({file}) => {
@@ -39,8 +40,8 @@ const File = ({file}) => {
         {file.type != 'dir' &&  <div onClick={(e)=>downloadClickHandler(e)}><img src={downloadIcon}alt=""/></div>}
         <div onClick={(e)=>deleteClickHandler(e)}><img src={deleteIcon}alt=""/></div>
       </div>
-      <div className='file__date'>{file.date}</div>
-      <div className='file__size'>{file.size}
+      <div className='file__date'>{file.date.slice(0,10)}</div>
+      <div className='file__size'>{sizeFormat(file.size)}
       </div>
     </div>
   );

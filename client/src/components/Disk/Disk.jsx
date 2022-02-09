@@ -6,6 +6,7 @@ import {getFiles, setCurrentDir} from "../../reducers/fileReducer";
 import rArrow from '../../../src/assets/image/rightA.svg';
 import backArrow from '../../../src/assets/image/back.svg';
 import home from '../../../src/assets/image/home1.svg'
+import Uploader from "./Uploader/Uploader";
 
 
 const Disk = () => {
@@ -45,9 +46,12 @@ const Disk = () => {
         <div className='folder_path'>
           {folders}
         </div>
-        <div className='sort-block'>sort</div>
+        <div className='sort-block'>
+
+        </div>
       </div>
       <FileList/>
+      <Uploader/>
     </div>
   );
 };
