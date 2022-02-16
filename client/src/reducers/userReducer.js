@@ -3,12 +3,12 @@ import {userAPI} from "../api/api";
 const SET_USER = 'SET_USER';
 const LOGOUT = 'LOGOUT';
 
-const initialState = {
+const defaultState = {
   currentUser: {},
   isAuth: false
 }
 
-const userReducer = (state = initialState, action) => {
+const userReducer = (state = defaultState, action) => {
   switch (action.type) {
     case SET_USER:
       return {...state, currentUser: action.payload, isAuth: true}
@@ -46,6 +46,7 @@ export const auth = () => async (dispatch) =>{
     const response = await userAPI.auth();
     dispatch(setUser(response.data.user))
     localStorage.setItem('token', response.data.token)
+    console.log(response.data.user)
   }catch (e){
     alert(e)
     localStorage.removeItem('token')

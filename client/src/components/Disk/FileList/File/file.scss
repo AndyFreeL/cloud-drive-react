@@ -60,7 +60,11 @@
   &:hover {
     background-color: #dcd7d7;
     .down-del-icons {
+      z-index: 5;
+      margin-bottom: -40px ;
       display: flex;
+      justify-content: space-between;
+      align-self: flex-end;
     }
   }
 }

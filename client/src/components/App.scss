@@ -1,11 +1,14 @@
 .app-wrapper{
-  display: grid;
-  grid-template-rows: 51px 1fr;
-  grid-template-columns: 2fr 10fr;
-  grid-template-areas:
-"header header"
-"leftbar navbar"
-"leftbar disk";
   margin: 0 auto;
+  width: 100vw;
+}
+.app-body{
+  display: flex;
+  margin-top: 91px;
+}
+.content{
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  height: 90vh;
 }

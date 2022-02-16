@@ -11,8 +11,14 @@ const UploadFile = ({file}) => {
     <div>
       <div className="upload-file">
         <div className="upload-file__header">
-          <div className="upload-file__name">{file.name}</div>
-          <button className="upload-file__remove" onClick={()=>dispatch(removeUploadFile(file.id))} ><img src={cross} alt=""/></button>
+          <div className="upload-file__name">{
+            file.name.length > 20
+              ? file.name.slice(0, 18) + '...'+ file.name.slice(-9)
+              : file.name
+          }</div>
+          <button className="upload-file__remove" onClick={() => dispatch(removeUploadFile(file.id))}><img src={cross}
+                                                                                                           alt=""/>
+          </button>
         </div>
         <div className="upload-file__progress-bar">
           <div className="upload-file__upload-bar" style={{width: file.progress + "%"}}/>

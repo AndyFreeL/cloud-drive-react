@@ -1,10 +1,10 @@
 .leftbar{
-  grid-area: leftbar;
+  width: 280px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   background-color: #eae9e9;
-  //border: 1px solid red;
   & button{
     margin: 10px;
     background-color: wheat;
@@ -14,7 +14,6 @@
 }
 
 .button-block{
-  position: fixed;
   margin-top: 40px;
 }
 
@@ -30,6 +29,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
   &__content{
     z-index: 8;
     background-color: white;
@@ -77,4 +77,30 @@ Input{
     background-color: #e3c99f;
   }
 }
+
+.disk-space{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  height: 100px;
+  background-color: wheat;
+  border: 2px solid grey;
+  border-radius: 17px;
+}
+.space-bar{
+  margin: 5px;
+  width: 180px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: rgb(110, 112, 112);
+}
+.used-space{
+  background-color: rgba(164, 13, 13, 0.67);
+  border-radius: 5px;
+  height: 10px;
+}
+//.free-space{
+//  font-size: 16px;
+//}
 

@@ -51,12 +51,13 @@ const File = ({file}) => {
   if (filesView === 'plate') {
     return(
       <div className='file-plate' onClick={() => openDirHandler()}>
-        <img src={file.type === 'dir' ? folderIcon : fileIcon} alt=""/>
-        <div className='file__name'>{(file.name.length > 15) ? (file.name.slice(0, 14)+'...') :file.name}</div>
         <div className='down-del-icons'>
           {file.type != 'dir' && <div onClick={(e) => downloadClickHandler(e)}><img src={downloadIcon} alt=""/></div>}
           <div onClick={(e) => deleteClickHandler(e)}><img src={deleteIcon} alt=""/></div>
         </div>
+        <img src={file.type === 'dir' ? folderIcon : fileIcon} alt=""/>
+        <div className='file__name'>{(file.name.length > 15) ? (file.name.slice(0, 14)+'...') :file.name}</div>
+
       </div>
     )
   }

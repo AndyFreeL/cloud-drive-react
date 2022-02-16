@@ -8,7 +8,7 @@ const PUSH_TO_STACK = 'PUSH_TO_STACK';
 const DELETE_FILE = 'DELETE_FILE';
 const SET_VIEW = 'SET_VIEW'
 
-const initialState = {
+const defaultState = {
   files:[],
   currentDir:null,
   popupDisplay: 'none',
@@ -16,7 +16,7 @@ const initialState = {
   view: 'list'
 }
 
-const fileReducer = (state = initialState, action) => {
+const fileReducer = (state = defaultState, action) => {
   switch (action.type) {
     case SET_FILE:return {...state, files: action.payload}
     case SET_CURRENT_DIR:return {...state, currentDir: action.payload}
@@ -44,6 +44,7 @@ export const getFiles = (currentDir, sort) => async(dispatch)=>{
   try{
     const response = await filesAPI.getFiles(currentDir,sort)
     dispatch(setFiles(response.data))
+    console.log(response.data)
   }catch (e){
     alert(e)
   }
@@ -79,6 +80,13 @@ export const deleteFile = (file) => async(dispatch)=>{
     alert(e)
   }
 }
-
+export const searchFile= (search) => async(dispatch)=>{
+  try{
+    const response = await filesAPI.searchFile(search)
+    dispatch(setFiles(response.data))
+  }catch (e){
+    alert(e)
+  }
+}
 
 export default fileReducer;

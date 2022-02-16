@@ -44,5 +44,8 @@ export const filesAPI = {
   },
   deleteFile(file){
     return instance.delete(`files?id=${file._id}`)
+  },
+  searchFile(search){
+    return instance.get(`files/search?search=${search}`)
   }
 }
