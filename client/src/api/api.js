@@ -1,9 +1,9 @@
 import * as axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:5000/api/',
-  headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
+  baseURL: 'http://localhost:5000/api/'
 });
+const token={headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}
 
 export const userAPI = {
   registration(email, password) {
@@ -13,7 +13,7 @@ export const userAPI = {
     return instance.post('auth/login', {email, password})
   },
   auth() {
-    return instance.get('auth/auth')
+    return instance.get('auth/auth', token)
   }
 }
 
@@ -29,23 +29,21 @@ export const filesAPI = {
     if (dirId && sort) {
       url = `files?parent=${dirId}&sort=${sort}`
     }
-    return instance.get(url)
+    return instance.get(url, token)
   },
   createDir(dirId, name){
-    return instance.post('files', { name, parent: dirId, type:'dir'})
+    return instance.post('files', { name, parent: dirId, type:'dir'}, token)
   },
   uploadFile(formData, uploadStatus){
-    return instance.post('files/upload', formData, uploadStatus)
+    return instance.post('files/upload', formData, uploadStatus, token)
   },
   downloadFile(file){
-    return instance.get(`files/download?id=${file._id}`, {
-      responseType:'blob'
-    })
+    return instance.get(`files/download?id=${file._id}`, {responseType:'blob'}, token)
   },
   deleteFile(file){
-    return instance.delete(`files?id=${file._id}`)
+    return instance.delete(`files?id=${file._id}`, token)
   },
   searchFile(search){
-    return instance.get(`files/search?search=${search}`)
+    return instance.get(`files/search?search=${search}`, token)
   }
 }

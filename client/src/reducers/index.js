@@ -4,11 +4,13 @@ import thunk from "redux-thunk";
 import userReducer from './userReducer';
 import fileReducer from './fileReducer';
 import uploadReducer from "./uploadReducer";
+import preloaderReducer from "./preloaderReducer";
 
 let reducers = combineReducers({
   user: userReducer,
   files: fileReducer,
-  upload: uploadReducer
+  upload: uploadReducer,
+  preloader:preloaderReducer
 
 });
 

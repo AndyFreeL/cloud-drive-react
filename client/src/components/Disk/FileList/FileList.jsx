@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './fileList.scss';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import File from "./File/File";
 import {CSSTransition, TransitionGroup} from "react-transition-group";
+import {getFiles} from "../../../reducers/fileReducer";
 
 const FileList = () => {
   const files = useSelector(state => state.files.files);

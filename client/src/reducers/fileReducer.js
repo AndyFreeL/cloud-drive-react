@@ -44,7 +44,6 @@ export const getFiles = (currentDir, sort) => async(dispatch)=>{
   try{
     const response = await filesAPI.getFiles(currentDir,sort)
     dispatch(setFiles(response.data))
-    console.log(response.data)
   }catch (e){
     alert(e)
   }

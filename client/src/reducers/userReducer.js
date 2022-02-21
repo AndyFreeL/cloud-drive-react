@@ -1,4 +1,5 @@
 import {userAPI} from "../api/api";
+import {hidePreloader, showPreloader} from "./preloaderReducer";
 
 const SET_USER = 'SET_USER';
 const LOGOUT = 'LOGOUT';
@@ -28,6 +29,7 @@ export const login = (email, password) => async (dispatch) =>{
     const response = await userAPI.login(email, password);
     dispatch(setUser(response.data.user))
     localStorage.setItem('token', response.data.token)
+    console.log(response.data.user)
   }catch (e){
     alert(e)
   }
@@ -40,18 +42,15 @@ export const registration = (email, password) => async (dispatch) =>{
     alert(e)
   }
 }
-
 export const auth = () => async (dispatch) =>{
   try{
     const response = await userAPI.auth();
     dispatch(setUser(response.data.user))
     localStorage.setItem('token', response.data.token)
-    console.log(response.data.user)
   }catch (e){
     alert(e)
     localStorage.removeItem('token')
   }
 }
-
 
 export default userReducer;

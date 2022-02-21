@@ -5,17 +5,23 @@ import {BrowserRouter, Navigate, Route, Routes,} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {auth} from "../reducers/userReducer";
-import DiskApp from "./DiskApp";
+import Disk from "./Disk/Disk";
+import Preloader from "./Preloader/Preloader";
+import {hidePreloader, showPreloader} from "../reducers/preloaderReducer";
 
 
 function App() {
   let isAuth = useSelector(state => state.user.isAuth)
   const dispatch = useDispatch();
+  const preloader = useSelector(state => state.preloader.preloader)
 
   useEffect(() => {
-    dispatch(auth())
+      dispatch(auth())
   }, [])
 
+  if (preloader === true) {
+    return <Preloader/>
+  }
 
   return (
     <BrowserRouter>
@@ -26,13 +32,14 @@ function App() {
           <Route path="*" element={<Navigate to="/login"/>}/>
         </Routes>
         : <Routes>
-          <Route exact path='/' element={<DiskApp/>}/>
+          <Route exact path='/' element={<Disk/>}/>
           <Route
             path="*"
-            element={<Navigate to="/" />}
+            element={<Navigate to="/"/>}
           />
         </Routes>
-        }
+      }
+
     </BrowserRouter>
   );
 }
