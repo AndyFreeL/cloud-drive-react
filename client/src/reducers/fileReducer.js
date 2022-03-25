@@ -1,4 +1,6 @@
 import {filesAPI} from "../api/api";
+import {login} from "./userReducer";
+import axios from "axios";
 
 const SET_FILE = 'SET_FILE';
 const SET_CURRENT_DIR = 'SET_CURRENT_DIR';
@@ -40,14 +42,41 @@ export const setFilesView = (payload)=>({type:SET_VIEW,  payload})
 
 
 //------------------------------actions----------------------------------------------
-export const getFiles = (currentDir, sort) => async(dispatch)=>{
-  try{
-    const response = await filesAPI.getFiles(currentDir,sort)
-    dispatch(setFiles(response.data))
-  }catch (e){
-    alert(e)
+// export const getFiles = (currentDir, sort) => async(dispatch)=>{
+//   try{
+//     console.log('getfiles')
+//     const response = await filesAPI.getFiles(currentDir,sort)
+//     dispatch(setFiles(response.data))
+//   }catch (e){
+//     alert(e)
+//   }
+// }
+
+export function getFiles(dirId, sort) {
+  return async dispatch => {
+    try {
+      let url = `http://localhost:5000/api/files`
+      if (dirId) {
+        url = `http://localhost:5000/api/files?parent=${dirId}`
+      }
+      if (sort) {
+        url = `http://localhost:5000/api/files?sort=${sort}`
+      }
+      if (dirId && sort) {
+        url = `http://localhost:5000/api/files?parent=${dirId}&sort=${sort}`
+      }
+
+      const response = await axios.get(url, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+      })
+      dispatch(setFiles(response.data))
+    } catch (e) {
+      alert(e.response.data.message)
+    }
   }
 }
+
+
 export const createDirAction = (currentDir, dirName) => async(dispatch)=>{
   try{
     const response = await filesAPI.createDir(currentDir, dirName)

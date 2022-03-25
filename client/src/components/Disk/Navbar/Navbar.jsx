@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import './navbar.scss'
 import {useDispatch, useSelector} from "react-redux";
-import {getFiles, setCurrentDir, setFilesView} from "../../../reducers/fileReducer";
+import {setCurrentDir} from "../../../reducers/fileReducer";
 import rArrow from '../../../../src/assets/image/rightA.svg';
 import backArrow from '../../../../src/assets/image/back.svg';
 import home from '../../../../src/assets/image/home1.svg'
 import tile from '../../../../src/assets/image/tile-sort.svg';
 import list from '../../../../src/assets/image/list-sort.svg';
+import {getFiles} from "../../../reducers/fileReducer";
+import {setFilesView} from "../../../reducers/fileReducer";
 
 
 const Navbar = () => {

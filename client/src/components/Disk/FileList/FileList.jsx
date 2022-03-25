@@ -9,6 +9,13 @@ const FileList = () => {
   const files = useSelector(state => state.files.files);
   const filesView = useSelector(state => state.files.view);
 
+  const trashbox=[{_id: "620374532e254e2dd44b0365"}];
+
+  const filtredFiles = files.reduce((acc,item)=>{
+    if (!trashbox.includes(item)) acc.push(item);
+    return acc;
+  }, []);
+
   if (files.length === 0) {
     return <div className='empty-folder'>Папка пуста</div>
   }

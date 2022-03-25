@@ -15,14 +15,15 @@ const Leftbar = () => {
 
   return (
     <div className='leftbar'>
-      <div className='button-block'> <div className='button' onClick={() => dispatch(setPopupDisplay('flex'))}>Создать папку</div>
+      <div className='button-block'>
+        <div className='button' onClick={() => dispatch(setPopupDisplay('flex'))}>Создать папку</div>
         <label htmlFor='upload-input' className='button'>Загрузить файл</label>
         <input multiple={true} type='file' id='upload-input' className='upload-input'
                onChange={(e) => {
                  const files = [...e.target.files]
-                 files.forEach(file => dispatch(uploadFile(file, currentDir)))
-               }
-               }/></div>
+                 files.forEach(file => dispatch(uploadFile(file, currentDir)))}}/>
+        <div className='button'>Корзина</div>
+      </div>
       <div className='disk-space'>
         <div className='space-bar'>
           <div className='used-space' style={{width:progressBar+'%'}}></div>

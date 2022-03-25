@@ -3,7 +3,7 @@ import Authorization from "./Authorization/Authorization";
 import Registration from "./Authorization/Registration";
 import {BrowserRouter, Navigate, Route, Routes,} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {auth} from "../reducers/userReducer";
 import Disk from "./Disk/Disk";
 import Preloader from "./Preloader/Preloader";
@@ -33,13 +33,9 @@ function App() {
         </Routes>
         : <Routes>
           <Route exact path='/' element={<Disk/>}/>
-          <Route
-            path="*"
-            element={<Navigate to="/"/>}
-          />
+          <Route path="*" element={<Navigate to="/"/>}/>
         </Routes>
       }
-
     </BrowserRouter>
   );
 }

@@ -13,6 +13,7 @@ export const userAPI = {
     return instance.post('auth/login', {email, password})
   },
   auth() {
+    console.log('auth req', token)
     return instance.get('auth/auth', token)
   }
 }
@@ -29,6 +30,7 @@ export const filesAPI = {
     if (dirId && sort) {
       url = `files?parent=${dirId}&sort=${sort}`
     }
+    console.log('filesApi token',token)
     return instance.get(url, token)
   },
   createDir(dirId, name){
